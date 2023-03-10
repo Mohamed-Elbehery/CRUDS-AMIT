@@ -61,13 +61,6 @@ const addProducts = () => {
   }
 };
 
-const errorAnimation = () => {
-  error.classList.add("animate");
-  setTimeout(() => {
-    error.classList.remove("animate");
-  }, 900);
-};
-
 const deleteProduct = (id) => {
   if (searchField.value.length == 0) {
     if (products.length == 1) products = [];
@@ -252,6 +245,13 @@ const displayProducts = () => {
   </tr>
 `;
   });
+};
+
+const errorAnimation = () => {
+  error.classList.add("animate");
+  setTimeout(() => {
+    error.classList.remove("animate");
+  }, 900);
 };
 
 const validation = () => {
