@@ -8,6 +8,8 @@ const addBtn = document.querySelector("#addBtn");
 const tbody = document.querySelector("tbody");
 const form = document.querySelector("form");
 const deleteAllBtn = document.querySelector("#deleteAllBtn");
+const error = document.querySelector("#form-error");
+const success = document.querySelector("#success");
 let updateBtnClicked = false;
 let products = [];
 
@@ -24,15 +26,27 @@ const addProducts = () => {
 
     products.push(product);
     localStorage.setItem("products", JSON.stringify(products));
-    if (products.length > 1)
-      deleteAllBtn.style.cssText = "display: block !important;";
+    success.innerHTML = "Product Added Successfully :)";
+
+    setTimeout(() => {
+      success.innerHTML = "";
+    }, 4000);
 
     displayProducts();
     clearInputs();
-  } else if (proName.value.length === 0) proName.focus();
-  else if (price.value.length === 0) price.focus();
-  else if (category.value.length === 0) category.focus();
-  else if (description.value.length === 0) description.focus();
+  } else if (proName.value.length === 0) {
+    proName.focus();
+    error.innerHTML = "Please enter a product Name";
+  } else if (price.value.length === 0) {
+    price.focus();
+    error.innerHTML = "Please enter a product Price";
+  } else if (category.value.length === 0) {
+    category.focus();
+    error.innerHTML = "Please enter a product Category";
+  } else if (description.value.length === 0) {
+    description.focus();
+    error.innerHTML = "Please enter a product Description";
+  }
 };
 
 const deleteProduct = (id) => {
@@ -127,8 +141,8 @@ const cancelUpdate = () => {
 const searchProducts = () => {
   if (searchField.value.length > 0) {
     products = JSON.parse(localStorage.getItem("products"));
-    products = products.filter(
-      (product) => product.proName == +searchField.value
+    products = products.filter((product) =>
+      product.proName.toLowerCase().startsWith(searchField.value.toLowerCase())
     );
     displayProducts();
   } else {
@@ -153,10 +167,14 @@ const clearInputs = () => {
 };
 
 const displayProducts = () => {
+  if (products.length > 1) {
+    deleteAllBtn.style.cssText = "display: block !important;";
+  }
   tbody.innerHTML = "";
 
   products.forEach((product) => {
-    tbody.innerHTML += ` <tr>
+    tbody.innerHTML += `
+  <tr>
     <td scope="row">
       <p id="nameProduct${product.id}">${product.proName}</p>
       <input
@@ -206,6 +224,10 @@ const displayProducts = () => {
   </tr>
 `;
   });
+};
+
+const validation = () => {
+  error.innerHTML = "";
 };
 
 //! Event Listeners

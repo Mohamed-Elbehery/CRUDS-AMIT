@@ -13,22 +13,45 @@
         </h1>
       </div>
       <form class="form my-5">
-        <div id="errorForm"></div>
+        <div
+          id="form-error"
+          class="text-danger mb-3 fw-bold text-capitalize"
+        ></div>
         <!--! Name Input -->
-        <label for="">PRODUCT NAME</label>
-        <input type="text" class="form-control mb-3" required id="name" />
+        <label for="name">PRODUCT NAME</label>
+        <input
+          type="text"
+          class="form-control mb-3"
+          id="name"
+          onkeydown="validation()"
+        />
 
         <!--! Price Input -->
         <label for="price">PRODUCT PRICE</label>
-        <input type="number" class="form-control mb-3" required id="price" />
+        <input
+          type="number"
+          class="form-control mb-3"
+          id="price"
+          onkeydown="validation()"
+        />
 
         <!--! Category Input -->
         <label for="cat">PRODUCT CATEGORY</label>
-        <input type="text" class="form-control mb-3" required id="cat" />
+        <input
+          type="text"
+          class="form-control mb-3"
+          id="cat"
+          onkeydown="validation()"
+        />
 
         <!--! Description Input -->
         <label for="desc">PRODUCT DESCRIPTION</label>
-        <input type="text" class="form-control mb-3" required id="desc" />
+        <input
+          type="text"
+          class="form-control mb-3"
+          id="desc"
+          onkeydown="validation()"
+        />
 
         <button class="btn btn-info text-dark mb-3" id="addBtn">
           Add Product
@@ -40,7 +63,10 @@
           class="form-control mb-3"
           placeholder="Search by Name..."
         />
-        <div id="error"></div>
+        <div
+          id="success"
+          class="text-success text-capitalize fw-bold fs-4"
+        ></div>
         <button
           type="button"
           class="btn btn-outline-danger mx-auto my-4 d-none"
