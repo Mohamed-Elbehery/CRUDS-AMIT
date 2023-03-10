@@ -39,9 +39,11 @@ const addProducts = () => {
       success.innerHTML = "";
       success.classList.remove("animate-success");
     }, 1500);
-
     displayProducts();
     clearInputs();
+    inputs.forEach((input) => {
+      input.style.boxShadow = "none";
+    });
   } else if (proName.value.length === 0) {
     proName.focus();
     error.innerHTML = "Please enter a product Name";
@@ -299,6 +301,14 @@ const toggleArrow = () => {
 
 const scrollUp = () => {
   window.scroll(0, 0);
+};
+
+const validInputs = (input) => {
+  if (input.value.length > 0) {
+    input.style.boxShadow = "0 0 5px 0.1rem rgb(27, 230, 27)";
+  } else {
+    input.style.boxShadow = "none";
+  }
 };
 
 //! Event Listeners
