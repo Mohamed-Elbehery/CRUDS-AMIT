@@ -7,6 +7,7 @@ const searchField = document.querySelector("input[type='search']");
 const addBtn = document.querySelector("#addBtn");
 const tbody = document.querySelector("tbody");
 const form = document.querySelector("form");
+const deleteAllBtn = document.querySelector("#deleteAllBtn");
 let updateBtnClicked = false;
 let products = [];
 
@@ -23,6 +24,8 @@ const addProducts = () => {
 
     products.push(product);
     localStorage.setItem("products", JSON.stringify(products));
+    if (products.length > 1)
+      deleteAllBtn.style.cssText = "display: block !important;";
 
     displayProducts();
     clearInputs();
@@ -134,6 +137,13 @@ const searchProducts = () => {
   }
 };
 
+const deleteAllProducts = () => {
+  products = [];
+  localStorage.setItem("products", JSON.stringify(products));
+  deleteAllBtn.style.display = "none";
+  displayProducts();
+};
+
 const handleSubmit = (e) => {
   e.preventDefault();
 };
@@ -192,7 +202,7 @@ const displayProducts = () => {
         Save
       </button>
     </td>
-    <td><button type="button" class="btn btn-outline-danger d-none" id="cancelBtn${product.id}" onclick="cancelUpdate()">Cancel</button></td>
+    <td><button type="button" class="btn btn-outline-warning d-none" id="cancelBtn${product.id}" onclick="cancelUpdate()">Cancel</button></td>
   </tr>
 `;
   });
@@ -202,6 +212,7 @@ const displayProducts = () => {
 addBtn.addEventListener("click", addProducts);
 form.addEventListener("submit", handleSubmit);
 searchField.addEventListener("keyup", searchProducts);
+deleteAllBtn.addEventListener("click", deleteAllProducts);
 
 //! Local Storage
 window.onload = () => {
