@@ -4,8 +4,40 @@
   box-sizing: border-box;
 }
 
-body {
-  overflow: hidden;
+html {
+  scroll-behavior: smooth;
+}
+
+.dark-icon,
+.light-icon {
+  position: fixed;
+  inset: 1.5rem 3rem auto auto;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.fa-solid.fa-sun {
+  display: none;
+}
+
+.fa-solid.fa-arrow-up {
+  position: fixed;
+  bottom: 2rem;
+  right: 3rem;
+  color: black;
+  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
+  border: 5px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.fa-solid.fa-arrow-up:hover {
+  background-color: white;
+  border-color: lightblue;
 }
 
 .success {

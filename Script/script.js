@@ -1,15 +1,20 @@
 //! Variables
+const inputs = document.querySelectorAll("input");
 const proName = document.querySelector("#name");
 const price = document.querySelector("#price");
 const category = document.querySelector("#cat");
 const description = document.querySelector("#desc");
 const searchField = document.querySelector("input[type='search']");
 const addBtn = document.querySelector("#addBtn");
+const table = document.querySelector("table");
 const tbody = document.querySelector("tbody");
 const form = document.querySelector("form");
 const deleteAllBtn = document.querySelector("#deleteAllBtn");
 const error = document.querySelector("#form-error");
 const success = document.querySelector("#success");
+const darkIcon = document.querySelector(".dark-icon");
+const lightIcon = document.querySelector(".fa-solid.fa-sun");
+const arrowUp = document.querySelector(".fa-solid.fa-arrow-up");
 let updateBtnClicked = false;
 let products = [];
 
@@ -28,11 +33,12 @@ const addProducts = () => {
     localStorage.setItem("products", JSON.stringify(products));
     success.innerHTML = "Product Added Successfully :)";
     success.classList.add("animate-success");
+    proName.focus();
 
     setTimeout(() => {
       success.innerHTML = "";
       success.classList.remove("animate-success");
-    }, 3500);
+    }, 1500);
 
     displayProducts();
     clearInputs();
@@ -247,17 +253,71 @@ const validation = () => {
   error.innerHTML = "";
 };
 
+const changeTheme = () => {
+  if (localStorage.theme == "dark") {
+    table.classList.add("text-white");
+    inputs.forEach((input) => {
+      input.classList =
+        "form-control mb-3 bg-secondary text-white border-secondary";
+    });
+    document.body.style.cssText = "background-color: #3b3b3b; color: white;";
+    darkIcon.style.display = "none";
+    lightIcon.style.display = "block";
+  } else {
+    table.classList.remove("text-white");
+    inputs.forEach((input) => {
+      input.classList = "form-control mb-3";
+    });
+    lightIcon.style.display = "none";
+    darkIcon.style.display = "block";
+    document.body.style.cssText = "";
+  }
+};
+
+const changeToDark = () => {
+  localStorage.setItem("theme", "dark");
+  changeTheme();
+};
+
+const changeToLight = () => {
+  localStorage.setItem("theme", "light");
+  changeTheme();
+};
+
+const toggleArrow = () => {
+  if (window.pageYOffset >= 600) {
+    arrowUp.style.cssText = "opacity: 1; pointer-events: all;";
+  } else {
+    arrowUp.style.cssText = "opacity: 0; pointer-events: none;";
+  }
+};
+
+const scrollUp = () => {
+  window.scroll(0, 0);
+};
+
 //! Event Listeners
 addBtn.addEventListener("click", addProducts);
 form.addEventListener("submit", handleSubmit);
 searchField.addEventListener("keyup", searchProducts);
 deleteAllBtn.addEventListener("click", deleteAllProducts);
+darkIcon.addEventListener("click", changeToDark);
+lightIcon.addEventListener("click", changeToLight);
+window.addEventListener("scroll", toggleArrow);
+arrowUp.addEventListener("click", scrollUp);
 
 //! Local Storage
 window.onload = () => {
   if (localStorage.products) {
     products = JSON.parse(localStorage.getItem("products"));
     displayProducts();
+  }
+
+  if (localStorage.theme) {
+    changeTheme();
+  } else {
+    localStorage.setItem("theme", "light");
+    changeTheme();
   }
 
   localStorage.setItem("products", JSON.stringify(products));

@@ -2,10 +2,18 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="Style/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://kit.fontawesome.com/77380724c1.css"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="Style/style.css" />
     <title>CRUD :)</title>
   </head>
   <body>
+    <i class="fa-solid fa-moon dark-icon"></i>
+    <i class="fa-solid fa-sun light-icon"></i>
+    <i class="fa-sharp fa-solid fa-arrow-up"></i>
     <div class="container">
       <div class="head">
         <h1 class="position-relative text-center mt-3">
@@ -19,50 +27,26 @@
         ></div>
         <!--! Name Input -->
         <label for="name">PRODUCT NAME</label>
-        <input
-          type="text"
-          class="form-control mb-3"
-          id="name"
-          onkeydown="validation()"
-        />
+        <input type="text" id="name" onkeydown="validation()" />
 
         <!--! Price Input -->
         <label for="price">PRODUCT PRICE</label>
-        <input
-          type="number"
-          class="form-control mb-3"
-          id="price"
-          onkeydown="validation()"
-        />
+        <input type="number" id="price" onkeydown="validation()" />
 
         <!--! Category Input -->
         <label for="cat">PRODUCT CATEGORY</label>
-        <input
-          type="text"
-          class="form-control mb-3"
-          id="cat"
-          onkeydown="validation()"
-        />
+        <input type="text" id="cat" onkeydown="validation()" />
 
         <!--! Description Input -->
         <label for="desc">PRODUCT DESCRIPTION</label>
-        <input
-          type="text"
-          class="form-control mb-3"
-          id="desc"
-          onkeydown="validation()"
-        />
+        <input type="text" id="desc" onkeydown="validation()" />
 
         <button class="btn btn-info text-dark mb-3" id="addBtn">
           Add Product
         </button>
         <p class="text-danger text-center fw-bold" id="emp"></p>
 
-        <input
-          type="search"
-          class="form-control mb-3"
-          placeholder="Search by Name..."
-        />
+        <input type="search" placeholder="Search by Name..." />
         <div
           id="success"
           class="success text-success text-capitalize fw-bold fs-4 my-4"
@@ -90,6 +74,10 @@
       </form>
     </div>
     <script src="Script/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/77380724c1.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="Script/script.js"></script>
   </body>
 </html>
