@@ -9,7 +9,7 @@ html {
 }
 
 input::placeholder {
-  color: rgba(0, 0, 0, 0.6) !important;
+  color: rgba(0, 0, 0, 0.45) !important;
   transition: 0.5s;
 }
 
