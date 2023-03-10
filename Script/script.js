@@ -3,18 +3,18 @@ const proName = document.querySelector("#name");
 const price = document.querySelector("#price");
 const category = document.querySelector("#cat");
 const description = document.querySelector("#desc");
+const searchField = document.querySelector("input[type='search']");
 const addBtn = document.querySelector("#addBtn");
 const tbody = document.querySelector("tbody");
 const form = document.querySelector("form");
 let updateBtnClicked = false;
 let products = [];
-let productId = 0;
 
 //! Functions
 const addProducts = () => {
   if (proName.value && price.value && category.value && description.value) {
     const product = {
-      id: productId++,
+      id: Math.floor(Math.random() * 999999999999999) + 1,
       proName: proName.value,
       price: price.value,
       category: category.value,
@@ -33,10 +33,19 @@ const addProducts = () => {
 };
 
 const deleteProduct = (id) => {
-  if (products.length == 1) products = [];
-  products = products.filter((product) => product.id != id);
-  localStorage.setItem("products", JSON.stringify(products));
-  displayProducts();
+  if (searchField.value.length == 0) {
+    if (products.length == 1) products = [];
+    products = products.filter((product) => product.id != id);
+    localStorage.setItem("products", JSON.stringify(products));
+    displayProducts();
+  } else {
+    products = JSON.parse(localStorage.products);
+    products = products.filter((product) => product.id != id);
+    localStorage.setItem("products", JSON.stringify(products));
+    //TODO To Trigger the event on the search field we dispatched this event
+    searchField.dispatchEvent(new Event("keyup", { bubbles: true }));
+    displayProducts();
+  }
 };
 
 const updateProduct = (id) => {
@@ -73,12 +82,16 @@ const updateProduct = (id) => {
 };
 
 const saveProduct = (id) => {
-  updateBtnClicked = false;
+  updateBtnClicked = true;
+  let proIndex;
   const proNameUpdate = document.querySelector(`#nameUpdate${id}`);
   const priceUpdate = document.querySelector(`#priceUpdate${id}`);
   const categoryUpdate = document.querySelector(`#catUpdate${id}`);
   const descUpdate = document.querySelector(`#descUpdate${id}`);
-  let product = products.filter((product) => product.id === id);
+  let product = products.find((product, index) => {
+    proIndex = index;
+    return product.id === id;
+  });
   product = {
     id: id,
     proName: proNameUpdate.value,
@@ -86,9 +99,22 @@ const saveProduct = (id) => {
     category: categoryUpdate.value,
     description: descUpdate.value,
   };
-  products[id] = product;
+  products[proIndex] = product;
   localStorage.setItem("products", JSON.stringify(products));
   displayProducts();
+};
+
+const searchProducts = () => {
+  if (searchField.value.length > 0) {
+    products = JSON.parse(localStorage.getItem("products"));
+    products = products.filter(
+      (product) => product.proName == +searchField.value
+    );
+    displayProducts();
+  } else {
+    products = JSON.parse(localStorage.getItem("products"));
+    displayProducts();
+  }
 };
 
 const handleSubmit = (e) => {
@@ -157,6 +183,7 @@ const displayProducts = () => {
 //! Event Listeners
 addBtn.addEventListener("click", addProducts);
 form.addEventListener("submit", handleSubmit);
+searchField.addEventListener("keyup", searchProducts);
 
 //! Local Storage
 window.onload = () => {
