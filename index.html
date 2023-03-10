@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="Style/bootstrap.min.css" />
+    <link rel="stylesheet" href="Style/style.css" />
+    <title>CRUD :)</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="head">
+        <h1 class="position-relative">
+          <span class="active">CRUDS</span> Operating System
+        </h1>
+      </div>
+      <form class="form my-5">
+        <div id="errorForm"></div>
+        <!--! Name Input -->
+        <label for="">PRODUCT NAME</label>
+        <input type="text" class="form-control mb-3" required id="name" />
+
+        <!--! Price Input -->
+        <label for="price">PRODUCT PRICE</label>
+        <input type="number" class="form-control mb-3" required id="price" />
+
+        <!--! Category Input -->
+        <label for="cat">PRODUCT CATEGORY</label>
+        <input type="text" class="form-control mb-3" required id="cat" />
+
+        <!--! Description Input -->
+        <label for="desc">PRODUCT DESCRIPTION</label>
+        <input type="text" class="form-control mb-3" required id="desc" />
+
+        <button class="btn btn-info text-dark mb-3" id="addBtn">
+          Add Product
+        </button>
+        <!-- <button class="btn btn-success text-dark mb-3 d-none" id="updateBtn">
+          Update Product
+        </button> -->
+        <p class="text-danger text-center fw-bold" id="emp"></p>
+
+        <input
+          type="search"
+          class="form-control mb-3"
+          placeholder="Search..."
+        />
+        <div id="error"></div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Delete</th>
+              <th>Update</th>
+            </tr>
+          </thead>
+          <tbody id="info"></tbody>
+        </table>
+      </form>
+    </div>
+    <script src="Script/bootstrap.bundle.min.js"></script>
+    <script src="Script/script.js"></script>
+  </body>
+</html>
