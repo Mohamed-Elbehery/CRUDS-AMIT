@@ -54,6 +54,7 @@ const updateProduct = (id) => {
     displayProducts();
     const updateBtn = document.querySelector(`#updateBtn${id}`);
     const saveBtn = document.querySelector(`#saveBtn${id}`);
+    const cancelBtn = document.querySelector(`#cancelBtn${id}`);
     const proNameUpdate = document.querySelector(`#nameUpdate${id}`);
     const priceUpdate = document.querySelector(`#priceUpdate${id}`);
     const categoryUpdate = document.querySelector(`#catUpdate${id}`);
@@ -77,6 +78,7 @@ const updateProduct = (id) => {
 
     updateBtn.style.display = "none";
     saveBtn.style.cssText = "display: block !important";
+    cancelBtn.style.cssText = "display: block !important";
     updateBtnClicked = true;
   }
 };
@@ -84,23 +86,38 @@ const updateProduct = (id) => {
 const saveProduct = (id) => {
   updateBtnClicked = true;
   let proIndex;
-  const proNameUpdate = document.querySelector(`#nameUpdate${id}`);
-  const priceUpdate = document.querySelector(`#priceUpdate${id}`);
-  const categoryUpdate = document.querySelector(`#catUpdate${id}`);
-  const descUpdate = document.querySelector(`#descUpdate${id}`);
+  //TODO to get the product and the index of the product in the products array
   let product = products.find((product, index) => {
     proIndex = index;
     return product.id === id;
   });
-  product = {
-    id: id,
-    proName: proNameUpdate.value,
-    price: priceUpdate.value,
-    category: categoryUpdate.value,
-    description: descUpdate.value,
-  };
-  products[proIndex] = product;
-  localStorage.setItem("products", JSON.stringify(products));
+  const proNameUpdate = document.querySelector(`#nameUpdate${id}`);
+  const priceUpdate = document.querySelector(`#priceUpdate${id}`);
+  const categoryUpdate = document.querySelector(`#catUpdate${id}`);
+  const descUpdate = document.querySelector(`#descUpdate${id}`);
+  if (
+    proNameUpdate.value &&
+    priceUpdate.value &&
+    categoryUpdate.value &&
+    descUpdate.value
+  ) {
+    product = {
+      id: id,
+      proName: proNameUpdate.value,
+      price: priceUpdate.value,
+      category: categoryUpdate.value,
+      description: descUpdate.value,
+    };
+    products[proIndex] = product;
+    localStorage.setItem("products", JSON.stringify(products));
+    displayProducts();
+  } else if (proNameUpdate.value.length === 0) proNameUpdate.focus();
+  else if (priceUpdate.value.length === 0) priceUpdate.focus();
+  else if (categoryUpdate.value.length === 0) categoryUpdate.focus();
+  else if (descUpdate.value.length === 0) descUpdate.focus();
+};
+
+const cancelUpdate = () => {
   displayProducts();
 };
 
@@ -175,6 +192,7 @@ const displayProducts = () => {
         Save
       </button>
     </td>
+    <td><button type="button" class="btn btn-outline-danger d-none" id="cancelBtn${product.id}" onclick="cancelUpdate()">Cancel</button></td>
   </tr>
 `;
   });
