@@ -175,10 +175,15 @@ const searchProducts = () => {
 };
 
 const deleteAllProducts = () => {
-  products = [];
-  localStorage.setItem("products", JSON.stringify(products));
-  deleteAllBtn.style.display = "none";
-  displayProducts();
+  const confirmation = prompt(
+    'Please Enter "yes" to Confirm that you want to delete all products.'
+  );
+  if (confirmation.toLowerCase() === "yes") {
+    products = [];
+    localStorage.setItem("products", JSON.stringify(products));
+    deleteAllBtn.style.display = "none";
+    displayProducts();
+  }
 };
 
 const handleSubmit = (e) => {

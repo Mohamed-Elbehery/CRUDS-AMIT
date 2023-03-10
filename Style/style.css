@@ -8,6 +8,15 @@ html {
   scroll-behavior: smooth;
 }
 
+input::placeholder {
+  color: rgba(0, 0, 0, 0.6) !important;
+  transition: 0.5s;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+}
+
 .dark-icon,
 .light-icon {
   position: fixed;
