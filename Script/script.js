@@ -27,26 +27,39 @@ const addProducts = () => {
     products.push(product);
     localStorage.setItem("products", JSON.stringify(products));
     success.innerHTML = "Product Added Successfully :)";
+    success.classList.add("animate-success");
 
     setTimeout(() => {
       success.innerHTML = "";
-    }, 4000);
+      success.classList.remove("animate-success");
+    }, 3500);
 
     displayProducts();
     clearInputs();
   } else if (proName.value.length === 0) {
     proName.focus();
     error.innerHTML = "Please enter a product Name";
+    errorAnimation();
   } else if (price.value.length === 0) {
     price.focus();
     error.innerHTML = "Please enter a product Price";
+    errorAnimation();
   } else if (category.value.length === 0) {
     category.focus();
     error.innerHTML = "Please enter a product Category";
+    errorAnimation();
   } else if (description.value.length === 0) {
     description.focus();
     error.innerHTML = "Please enter a product Description";
+    errorAnimation();
   }
+};
+
+const errorAnimation = () => {
+  error.classList.add("animate");
+  setTimeout(() => {
+    error.classList.remove("animate");
+  }, 900);
 };
 
 const deleteProduct = (id) => {
@@ -54,6 +67,7 @@ const deleteProduct = (id) => {
     if (products.length == 1) products = [];
     products = products.filter((product) => product.id != id);
     localStorage.setItem("products", JSON.stringify(products));
+    deleteAllBtn.style.display = "none";
     displayProducts();
   } else {
     products = JSON.parse(localStorage.products);

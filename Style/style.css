@@ -1,2 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  overflow: hidden;
+}
 
+.success {
+  opacity: 0;
+  transition: 0.5s;
+  position: relative;
+  left: 0;
+  transform: translateX(0);
+}
+
+.animate-success {
+  position: relative;
+  animation: shake 0.15s 2 alternate ease;
+  opacity: 1;
+}
+
+.animate#form-error {
+  animation: shake 0.25s 1 ease-in-out;
+  transform: translateX(0);
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(-10px);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  40% {
+    transform: translateX(-10px);
+  }
+  60% {
+    transform: translateX(10px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
