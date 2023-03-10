@@ -81,6 +81,7 @@ const deleteProduct = (id) => {
 
 const updateProduct = (id) => {
   updateBtnClicked = false;
+  addBtn.type = "button";
   if (!updateBtnClicked) {
     displayProducts();
     const updateBtn = document.querySelector(`#updateBtn${id}`);
@@ -111,6 +112,7 @@ const updateProduct = (id) => {
     saveBtn.style.cssText = "display: block !important";
     cancelBtn.style.cssText = "display: block !important";
     updateBtnClicked = true;
+    proNameUpdate.focus();
   }
 };
 
@@ -132,6 +134,7 @@ const saveProduct = (id) => {
     categoryUpdate.value &&
     descUpdate.value
   ) {
+    addBtn.type = "submit";
     product = {
       id: id,
       proName: proNameUpdate.value,
@@ -226,7 +229,7 @@ const displayProducts = () => {
         Update
       </button>
       <button
-        type="button"
+        type="submit"
         class="btn btn-outline-success px-3 d-none"
         id="saveBtn${product.id}"
         onclick="saveProduct(${product.id})"
