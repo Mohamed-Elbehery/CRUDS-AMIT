@@ -11,9 +11,11 @@
     <title>CRUD :)</title>
   </head>
   <body>
-    <i class="fa-solid fa-moon dark-icon"></i>
-    <i class="fa-solid fa-sun light-icon"></i>
+    <!--! Theme icons and Scroll Up Button -->
+    <i class="fa-solid fa-moon"></i>
+    <i class="fa-solid fa-sun"></i>
     <i class="fa-sharp fa-solid fa-arrow-up"></i>
+    <!--! Main Code -->
     <div class="container">
       <div class="head">
         <h1 class="position-relative text-center mt-3">
@@ -25,7 +27,7 @@
           id="form-error"
           class="form-error text-danger mb-3 fw-bold text-capitalize"
         ></div>
-        <!--! Name Input -->
+        <!--! Name -->
         <label for="name">PRODUCT NAME</label>
         <input
           type="text"
@@ -35,8 +37,7 @@
           onkeydown="validation()"
           class="form-control mb-3"
         />
-
-        <!--! Price Input -->
+        <!--! Price -->
         <label for="price">PRODUCT PRICE</label>
         <input
           type="number"
@@ -47,7 +48,7 @@
           class="form-control mb-3"
         />
 
-        <!--! Category Input -->
+        <!--! Category -->
         <label for="cat">PRODUCT CATEGORY</label>
         <input
           type="text"
@@ -58,7 +59,7 @@
           class="form-control mb-3"
         />
 
-        <!--! Description Input -->
+        <!--! Description -->
         <label for="desc">PRODUCT DESCRIPTION</label>
         <input
           type="text"
@@ -68,23 +69,25 @@
           onkeydown="validation()"
           class="form-control mb-3"
         />
-
         <button class="btn btn-info text-dark mb-3" id="addBtn">
           Add Product
         </button>
-        <p class="text-danger text-center fw-bold" id="emp"></p>
+        <!-- <p class="text-danger text-center fw-bold" id="emp"></p> -->
 
+        <!--! Search -->
         <input
           type="search"
           placeholder="Search by Name..."
           class="form-control mb-3"
         />
+        <!--! Success Message -->
         <p
           id="success"
           class="success text-capitalize fw-bold fs-4 text-center"
         >
           Product Added Successfully :)
         </p>
+        <!--! Delete All Button -->
         <button
           type="button"
           class="btn btn-outline-danger mx-auto my-4 d-none"
@@ -93,6 +96,7 @@
           Delete All
         </button>
         <table class="table">
+          <!--! Table Header -->
           <thead>
             <tr>
               <th>Name</th>
@@ -103,7 +107,8 @@
               <th>Update</th>
             </tr>
           </thead>
-          <tbody id="info"></tbody>
+          <!--! Table Body -->
+          <tbody></tbody>
         </table>
       </form>
     </div>

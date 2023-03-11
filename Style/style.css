@@ -1,7 +1,11 @@
+/*! Global Rules */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 html {
@@ -25,8 +29,9 @@ input:focus::placeholder {
   opacity: 0;
 }
 
-.dark-icon,
-.light-icon {
+/*! Theme Icons */
+.fa-solid.fa-moon,
+.fa-solid.fa-sun {
   position: fixed;
   inset: 1.75rem 3rem auto auto;
   font-size: 2rem;
@@ -34,13 +39,28 @@ input:focus::placeholder {
   z-index: 1;
 }
 
-.dark-icon {
-  color: rgb(92, 148, 253);
+.fa-solid.fa-moon {
+  color: rgb(63, 131, 255);
+  filter: drop-shadow(0px 0 10px rgb(0, 89, 255));
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.dark-icon:hover {
+  opacity: 1;
+  filter: drop-shadow(0px 0 15px rgb(0, 89, 255));
 }
 
 .fa-solid.fa-sun {
   display: none;
   color: gold;
+  filter: drop-shadow(0 0 15px gold);
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.fa-solid.fa-sun:hover {
+  opacity: 1;
 }
 
 .fa-solid.fa-arrow-up {
@@ -63,6 +83,7 @@ input:focus::placeholder {
   border-color: lightblue;
 }
 
+/*! Success Message */
 .success {
   opacity: 1;
   filter: blur(2px);
@@ -78,6 +99,7 @@ input:focus::placeholder {
   transform: scale(1) rotateY(-360deg);
 }
 
+/*! Animations */
 .animate {
   animation: shake 0.25s 1 ease-in-out;
 }

@@ -12,13 +12,14 @@ const form = document.querySelector("form");
 const deleteAllBtn = document.querySelector("#deleteAllBtn");
 const error = document.querySelector("#form-error");
 const success = document.querySelector("#success");
-const darkIcon = document.querySelector(".dark-icon");
+const darkIcon = document.querySelector(".fa-solid.fa-moon");
 const lightIcon = document.querySelector(".fa-solid.fa-sun");
 const arrowUp = document.querySelector(".fa-solid.fa-arrow-up");
 let updateBtnClicked = false;
 let products = [];
 
 //! Functions
+//* Will be Triggered after clicking on the Add Product button
 const addProducts = () => {
   if (proName.value && price.value && category.value && description.value) {
     const product = {
@@ -61,6 +62,7 @@ const addProducts = () => {
   }
 };
 
+//* Will be Triggered after clicking on the delete button
 const deleteProduct = (id) => {
   if (searchField.value.length == 0) {
     if (products.length == 1) products = [];
@@ -78,6 +80,7 @@ const deleteProduct = (id) => {
   }
 };
 
+//* Will be Triggered after clicking on the update button
 const updateProduct = (id) => {
   updateBtnClicked = false;
   addBtn.type = "button";
@@ -115,6 +118,7 @@ const updateProduct = (id) => {
   }
 };
 
+//* Will save the new updates for the product
 const saveProduct = (id) => {
   updateBtnClicked = true;
   let proIndex;
@@ -150,10 +154,12 @@ const saveProduct = (id) => {
   else if (descUpdate.value.length === 0) descUpdate.focus();
 };
 
+//* Will cancel the update function
 const cancelUpdate = () => {
   displayProducts();
 };
 
+//* Will be Triggered on each keyup event on the search field
 const searchProducts = () => {
   if (searchField.value.length > 0) {
     products = JSON.parse(localStorage.getItem("products"));
@@ -167,6 +173,7 @@ const searchProducts = () => {
   }
 };
 
+//* Will be Triggered after adding at least 2 products
 const deleteAllProducts = () => {
   const confirmation = prompt(
     'Please Enter "yes" to Confirm that you want to delete all products.'
@@ -179,14 +186,17 @@ const deleteAllProducts = () => {
   }
 };
 
+//* to Prevent the page from refreshing
 const handleSubmit = (e) => {
   e.preventDefault();
 };
 
+//* Will clear the inputs after adding a new product
 const clearInputs = () => {
   proName.value = price.value = category.value = description.value = "";
 };
 
+//* Will be Triggered after adding, deleting or updating a product
 const displayProducts = () => {
   if (products.length > 1) {
     deleteAllBtn.style.cssText = "display: block !important;";
@@ -247,6 +257,7 @@ const displayProducts = () => {
   });
 };
 
+//* Will be Triggered if there is an empty input field
 const errorAnimation = () => {
   error.classList.add("animate");
   setTimeout(() => {
@@ -254,10 +265,12 @@ const errorAnimation = () => {
   }, 900);
 };
 
+//* Will be Triggered if the user presses any key on the search field
 const validation = () => {
   error.innerHTML = "";
 };
 
+//* Will be Triggered if the user clicks on any theme icon or reloading the page
 const changeTheme = () => {
   if (localStorage.theme == "dark") {
     table.classList.add("text-white");
@@ -279,16 +292,19 @@ const changeTheme = () => {
   }
 };
 
+//* Will be Triggered if the user clicks on the moon icon
 const changeToDark = () => {
   localStorage.setItem("theme", "dark");
   changeTheme();
 };
 
+//* Will be Triggered if the user clicks on the sun icon
 const changeToLight = () => {
   localStorage.setItem("theme", "light");
   changeTheme();
 };
 
+//* Will be Triggered if the user pageYOffset >= 600
 const toggleArrow = () => {
   if (window.pageYOffset >= 600) {
     arrowUp.style.cssText = "opacity: 1; pointer-events: all;";
@@ -297,10 +313,12 @@ const toggleArrow = () => {
   }
 };
 
+//* Will be Triggered if the user clicks on the Arrow Up icon at the bottom right corner of the page
 const scrollUp = () => {
   window.scroll(0, 0);
 };
 
+//* Will be Triggered if the user stops focusing on the input fields
 const validInputs = (input) => {
   if (input.value.length > 0) {
     input.style.boxShadow = "0 0 5px 0.1rem rgb(27, 230, 27)";
