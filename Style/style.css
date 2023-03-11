@@ -28,13 +28,19 @@ input:focus::placeholder {
 .dark-icon,
 .light-icon {
   position: fixed;
-  inset: 1.5rem 3rem auto auto;
+  inset: 1.75rem 3rem auto auto;
   font-size: 2rem;
   cursor: pointer;
+  z-index: 1;
+}
+
+.dark-icon {
+  color: rgb(92, 148, 253);
 }
 
 .fa-solid.fa-sun {
   display: none;
+  color: gold;
 }
 
 .fa-solid.fa-arrow-up {
@@ -58,15 +64,18 @@ input:focus::placeholder {
 }
 
 .success {
-  opacity: 0;
-  filter: blur(1px);
-  transition: 0.5s;
+  opacity: 1;
+  filter: blur(2px);
+  transition: 1s linear;
+  color: rgb(37, 190, 37);
+  text-shadow: 0 0 5px rgb(68, 236, 68);
+  transform: scale(0) rotateY(360deg);
 }
 
 .animate-success {
-  animation: shake 0.15s 2 alternate ease;
   filter: blur(0);
   opacity: 1;
+  transform: scale(1) rotateY(-360deg);
 }
 
 .animate {

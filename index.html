@@ -33,6 +33,7 @@
           placeholder="Name..."
           onblur="validInputs(this)"
           onkeydown="validation()"
+          class="form-control mb-3"
         />
 
         <!--! Price Input -->
@@ -43,6 +44,7 @@
           placeholder="Price..."
           onblur="validInputs(this)"
           onkeydown="validation()"
+          class="form-control mb-3"
         />
 
         <!--! Category Input -->
@@ -53,6 +55,7 @@
           placeholder="Category..."
           onblur="validInputs(this)"
           onkeydown="validation()"
+          class="form-control mb-3"
         />
 
         <!--! Description Input -->
@@ -63,6 +66,7 @@
           placeholder="Description..."
           onblur="validInputs(this)"
           onkeydown="validation()"
+          class="form-control mb-3"
         />
 
         <button class="btn btn-info text-dark mb-3" id="addBtn">
@@ -70,14 +74,20 @@
         </button>
         <p class="text-danger text-center fw-bold" id="emp"></p>
 
-        <input type="search" placeholder="Search by Name..." />
-        <div
+        <input
+          type="search"
+          placeholder="Search by Name..."
+          class="form-control mb-3"
+        />
+        <p
           id="success"
-          class="success text-success text-capitalize fw-bold fs-4 my-4"
-        ></div>
+          class="success text-capitalize fw-bold fs-4 text-center"
+        >
+          Product Added Successfully :)
+        </p>
         <button
           type="button"
-          class="btn btn-outline-danger mx-auto my-4 d-none animate"
+          class="btn btn-outline-danger mx-auto my-4 d-none"
           id="deleteAllBtn"
         >
           Delete All

@@ -31,14 +31,12 @@ const addProducts = () => {
 
     products.push(product);
     localStorage.setItem("products", JSON.stringify(products));
-    success.innerHTML = "Product Added Successfully :)";
     success.classList.add("animate-success");
     proName.focus();
 
     setTimeout(() => {
-      success.innerHTML = "";
       success.classList.remove("animate-success");
-    }, 1500);
+    }, 3000);
     displayProducts();
     clearInputs();
     inputs.forEach((input) => {
