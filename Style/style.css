@@ -90,13 +90,13 @@ input:focus::placeholder {
   transition: 1s linear;
   color: rgb(37, 190, 37);
   text-shadow: 0 0 5px rgb(68, 236, 68);
-  transform: scale(0) rotateY(360deg);
+  transform: scale(0);
 }
 
 .animate-success {
   filter: blur(0);
   opacity: 1;
-  transform: scale(1) rotateY(-360deg);
+  transform: scale(1);
 }
 
 /*! Animations */
