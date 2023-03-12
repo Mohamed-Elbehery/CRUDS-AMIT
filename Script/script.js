@@ -351,5 +351,6 @@ window.onload = () => {
     changeTheme();
   }
 
+  proName.focus();
   localStorage.setItem("products", JSON.stringify(products));
 };
