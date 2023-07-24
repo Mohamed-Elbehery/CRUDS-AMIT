@@ -1,0 +1,169 @@
+/*! Global Rules */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+body {
+  background-color: var(--bodyBackground);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input {
+  margin-top: 0.5rem;
+}
+
+input:focus {
+  box-shadow: 0 0 3px 0.25rem rgba(52, 164, 255, 0.65) !important;
+}
+
+input::placeholder {
+  color: rgba(0, 0, 0, 0.45) !important;
+  transition: 0.5s;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+}
+
+/*! Theme Icons */
+.fa-solid.fa-moon,
+.fa-solid.fa-sun {
+  position: fixed;
+  inset: 1.75rem 3rem auto auto;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.fa-solid.fa-moon {
+  color: rgb(63, 131, 255);
+  filter: drop-shadow(0px 0 10px rgb(0, 89, 255));
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.dark-icon:hover {
+  opacity: 1;
+  filter: drop-shadow(0px 0 15px rgb(0, 89, 255));
+}
+
+.fa-solid.fa-sun {
+  display: none;
+  color: gold;
+  filter: drop-shadow(0 0 15px gold);
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.fa-solid.fa-sun:hover {
+  opacity: 1;
+}
+
+.fa-solid.fa-arrow-up {
+  position: fixed;
+  bottom: 2rem;
+  right: 3rem;
+  color: black;
+  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
+  border: 5px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.fa-solid.fa-arrow-up:hover {
+  background-color: white;
+  border-color: lightblue;
+}
+
+/*! Success Message */
+.success {
+  opacity: 1;
+  filter: blur(2px);
+  transition: 0.35s ease;
+  color: rgb(37, 190, 37);
+  text-shadow: 0 0 5px rgb(68, 236, 68);
+  transform: scale(0);
+}
+
+.animate-success {
+  filter: blur(0);
+  opacity: 1;
+  transform: scale(1);
+}
+
+/*! Animations */
+.animate {
+  animation: shake 0.25s 1 ease-in-out;
+}
+
+/*! Login Form */
+form#form-login {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: 0.3s;
+}
+
+form#form-login input {
+  width: 100%;
+}
+
+form#form-login button {
+  all: unset;
+  color: #b2b2b2;
+  border: 2px solid #b2b2b2;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 1rem;
+}
+
+form#form-login button:hover {
+  background-color: rgb(99, 99, 99);
+  color: white;
+}
+
+form#form-login button:last-child {
+  all: unset;
+  color: #b2b2b2;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form#form-login button#user-btn:hover {
+  color: #939393;
+}
+
+@keyframes shake {
+  0%,
+  40%,
+  80% {
+    transform: translateX(-10px);
+  }
+  20%,
+  60% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

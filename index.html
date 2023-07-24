@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="Style/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://kit.fontawesome.com/77380724c1.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="Style/style.css" />
+    <title>CRUDS :)</title>
+  </head>
+  <body>
+    <!--! Theme icons and Scroll Up Button -->
+    <i class="fa-solid fa-moon"></i>
+    <i class="fa-solid fa-sun"></i>
+    <i class="fa-sharp fa-solid fa-arrow-up"></i>
+    <main>
+      <!--! Main Code -->
+      <div class="container">
+        <div class="head">
+          <h1 class="position-relative text-center mt-3">
+            <span class="active">CRUDS</span> Operating System
+          </h1>
+        </div>
+        <div class="admin-container">
+          <form class="form my-5">
+            <!--! Name -->
+            <label for="name">PRODUCT NAME</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Name..."
+              onblur="validInputs(this)"
+              oninput="validation(event)"
+              class="form-control mb-3"
+            />
+            <p class="form-error text-danger mb-3 fw-bold text-capitalize"></p>
+  
+            <!--! Price -->
+            <label for="price">PRODUCT PRICE</label>
+            <input
+              type="number"
+              id="price"
+              placeholder="Price..."
+              onblur="validInputs(this)"
+              oninput="validation(event)"
+              class="form-control mb-3"
+            />
+            <p class="form-error text-danger mb-3 fw-bold text-capitalize"></p>
+  
+            <!--! Category -->
+            <label for="cat">PRODUCT CATEGORY</label>
+            <input
+              type="text"
+              id="cat"
+              placeholder="Category..."
+              onblur="validInputs(this)"
+              oninput="validation(event)"
+              class="form-control mb-3"
+            />
+            <p class="form-error text-danger mb-3 fw-bold text-capitalize"></p>
+  
+            <!--! Description -->
+            <label for="desc">PRODUCT DESCRIPTION</label>
+            <input
+              type="text"
+              id="desc"
+              placeholder="Description..."
+              onblur="validInputs(this)"
+              oninput="validation(event)"
+              class="form-control mb-3"
+            />
+            <p class="form-error text-danger mb-3 fw-bold text-capitalize"></p>
+  
+            <button class="btn btn-info text-dark mb-3" id="addBtn">
+              Add Product
+            </button>  
+            <!--! Search -->
+            <input
+              type="search"
+              placeholder="Search by Name..."
+              class="form-control mb-3"
+            />
+            <!--! Success Message -->
+            <p
+              id="success"
+              class="success text-capitalize fw-bold fs-4 text-center"
+            >
+              Product Added Successfully :)
+            </p>
+            <!--! Delete All Button -->
+            <button
+              type="button"
+              class="btn btn-outline-danger mx-auto my-4 d-none"
+              id="deleteAllBtn"
+            >
+              Delete All
+            </button>
+        </div>
+          <table class="table">
+            <!--! Table Header -->
+            <thead></thead>
+            <!--! Table Body -->
+            <tbody></tbody>
+          </table>
+        </form>
+      </div>
+    </main>
+    <script src="Script/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/77380724c1.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="Script/script.js"></script>
+  </body>
+</html>
